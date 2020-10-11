@@ -12,7 +12,6 @@ py_poll_csv= os.path.join('py_poll.csv')
 with open(py_poll_csv) as csvfile:
     csvreader= csv.reader(csvfile, delimiter=',')
     csv_header=next(csvreader)
-    print(csv_header)
 
 #Define Variables
 #def get_results(data):
@@ -47,6 +46,7 @@ with open(py_poll_csv) as csvfile:
             
             
                 #Print Statements
+            
             print("Election Results")
             print("---------------")
             print(f'Total Votes: {total_votes}')
@@ -54,23 +54,31 @@ with open(py_poll_csv) as csvfile:
             print("----------------")
             print(f'Winner: {winning_candidate}')
             print("-------------------------")
+            summary = f'{unique_candidates}: {percent:.3f}% ({candidate_count})'
+            print(summary, end= "")
         
         #set exit path
-    #py_poll= os.path.join("PyPollResults.txt")
+py_poll= os.path.join("PyPollResults.txt")
         
         #output to txt file
-    #with open(py_poll, "w") as txtfile:
-            #txtfile.write('Election Results')
-            #txtfile.write('\n--------------------')
-            #txtfile.write(f'\nTotal Votes: {total_votes}')
-            #txtfile.write('\n--------------------')
-           # for i in range(len(unique_candidates)):
-               # txtfile.write(f'\n{unique_candidates[i]}: {percent[i]}% {candidate_count[i]}')
-           # txtfile.write('\n------------------------')
-           # txtfile.write(f'\nWinner: {winner}')
-            #txtfile.write('\n----------------------')
+with open(py_poll, "w") as txtfile:
+
+    voting_summary = (
+            f'--------------\n'
+            f'Election Results\n'
+            f'---------------\n'
+            f'Total Votes: {total_votes}\n'
+            f'---------------------\n'
+            f'----------------\n'
+            f'Winner: {winning_candidate}\n'
+            f'-------------------------\n'
+            )              
+    txtfile.write(voting_summary)
+        
+
+                  
             
-            #get_results(csvreader)
+
                 
             
                 
